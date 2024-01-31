@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     overflow: hidden;
+    cursor: url("/asset/cursor.png"), auto;
 }
 #bg{
     position: absolute;
@@ -50,7 +51,7 @@ input{
     display: block;
     bottom: 20vh;
     width: 10vh;
-    left: 90vw;
+    left: 110vw;
     animation: koopaMoveLeft 5s linear;
 }
 .kpText{
@@ -62,3 +63,27 @@ input{
 .kp{
     width: 10vh;
 }
+
+#ready{
+    position: absolute;
+    width: 15vw;
+    height: 10vh;
+    background-color: rgb(33, 233, 50);
+    left: 50vw;
+    transform: translateX(-50%);
+    z-index: 2;
+    top: 30vh;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border-radius: 5vh;
+    text-align: center;
+    font-weight: bold;
+    line-height: 10vh;
+    font-size: 6vh;
+    border-style: groove;
+
+}
+#ready:hover{
+    background-color: green;
+}
+
+
