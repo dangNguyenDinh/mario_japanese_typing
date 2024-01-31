@@ -1,6 +1,6 @@
 export default class{
     kp1 = "./asset/koopa.png";
-    curKoopaLeft = window.innerWidth;
+    curKoopaLeft = window.innerWidth *2;
     kpResult = "";
     queue = [];
     //constructor
@@ -41,8 +41,6 @@ export default class{
         var koopaArr = document.querySelectorAll(".kpEle");
         var mario = document.querySelector("#mario");
         for(let i=0;i<koopaArr.length;i++){
-        console.log( )
-
             if((koopaArr[i].offsetLeft <= (mario.offsetLeft + mario.clientWidth)) && koopaArr[i].querySelector("img").src.includes("/asset/koopa.png")){
                 
                 return true;
@@ -52,6 +50,14 @@ export default class{
         return false;
     }
 
+    static deleteKoopaMostRight(){
+        var koopaArr = document.querySelectorAll(".kpEle");
+        for(let i=0;i<koopaArr.length;i++){
+            if(koopaArr[i].offsetLeft){
+
+            }
+        }
+    }
     // stop(){
     //     var arr = document.querySelector(".kqEle");
     //     for(let i=0;i<arr.length;i++){
