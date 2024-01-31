@@ -45,7 +45,6 @@ export default class{
                 
                 return true;
             }
-            console.log((mario.clientWidth));
         }
         return false;
     }

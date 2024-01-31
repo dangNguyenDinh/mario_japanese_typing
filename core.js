@@ -11,11 +11,18 @@ document.getElementById("mario").style.bottom = a.bottom;
 document.getElementById("mario").style.left = a.left;
 //ready step
 document.querySelector("#mario").style.display = "none";
+document.querySelector("#input").style.display = "none";
+document.querySelector("#restart").style.display = "none";
+document.querySelector("#menu").style.display = "none";
 
 document.querySelector("#ready").addEventListener("click", ()=>{
     document.querySelector("#ready").style.display = "none";
     document.querySelector("#mario").style.display = "block";
-
+    document.querySelector("#input").style.display = "block";
+    playbgmusic();
+    //tính điểm 
+    let score = 0;
+    let time = 91;
     //xử lý tín hiệu nhận input
     let inputTextTag = document.querySelector("#input").querySelector("input");
     inputTextTag.focus();
@@ -33,6 +40,7 @@ document.querySelector("#ready").addEventListener("click", ()=>{
         //mario chạy
         a.renderRun();
         //xử lý string input
+        inputTextTag.focus();
         var stringInput = inputTextTag.value;
         if(stringInput.length > 3){
             var len = stringInput.length;
@@ -40,6 +48,8 @@ document.querySelector("#ready").addEventListener("click", ()=>{
         }
         //check từ đang xét
         if(stringInput.includes(b.queue[0])){
+            //nếu trúng 1 con koopa
+            document.getElementById("curscore").textContent = `SCORE: ${++score}`;
             isDisplayGun = true;
             isExplode = true;
             b.queue.shift();
@@ -61,26 +71,47 @@ document.querySelector("#ready").addEventListener("click", ()=>{
             isDisplayGun = false;
             document.querySelectorAll(".kpEle")[0].remove();
         }
-        //vòng for tần số thấp
+        //vòng for tần số thấp để xuất koopa
         if(count%30==0){
             b.renderRun();
         }
-        count++;
+        
 
         //kiểm tra game over
         if(Koopa.returnGameOver() == true){
             a.marioDead();
+            document.getElementById("input").remove();
+            document.getElementById("score").remove();       
+            document.querySelector("#bg").style.animation = "setGameOver 2s linear";
+            playdeadmusic();
+            document.querySelector("#bg").style.backgroundImage = "url(\"./asset/dead.png\")";  
+            setTimeout(()=>{
+                document.querySelector("#restart").style.display = "block";
+                document.querySelector("#menu").style.display = "block";
+
+            }, 3000);
             clearInterval(mainInterval);
         }
         
+        //for tần số thấp để countdown thời gian
+        if(count%10 == 0){
+            time--;
+            document.getElementById("time").textContent = `TIME LEFT: ${time}s`
+        }
+        count++;
+        console.log(count);
     }, 100);
 
 })
 
-
-function playbgmusic(){
+function playdeadmusic(){
+    document.querySelector("audio").remove();
     var a = document.createElement("audio");
-    a.src = "./asset/bg.mp3";
+    a.src = "./asset/thua-cuoc.mp3";
+    a.play();
+}
+function playbgmusic(){
+    var a = document.querySelector("audio");
     a.play();
 }
 function playshotmusic(){
@@ -88,3 +119,4 @@ function playshotmusic(){
     a.src = "./asset/gun.mp3";
     a.play();
 }
+

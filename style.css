@@ -2,7 +2,6 @@
     margin: 0;
     padding: 0;
     overflow: hidden;
-    cursor: url("/asset/cursor.png"), auto;
 }
 #bg{
     position: absolute;
@@ -34,16 +33,21 @@
     position: absolute;
     width: 15vw;
     height: 10vh;
-    background-color: darkblue;
     left: 50vw;
     transform: translateX(-50%);
     z-index: 1;
     bottom: 0;
+    border-radius: 2vh;
 }
 input{
     margin: 1vw;
-    width: 13vw;
+    width: 1px;
     text-align: center;
+    height: 0px;
+    font-size: 4vh;
+    border: none;
+    outline: none;
+    bottom: 0;
 }
 
 .kpEle{
@@ -78,7 +82,7 @@ input{
     text-align: center;
     font-weight: bold;
     line-height: 10vh;
-    font-size: 6vh;
+    font-size: 5vh;
     border-style: groove;
 
 }
@@ -86,5 +90,66 @@ input{
     background-color: green;
     cursor: pointer;
 }
-
-
+@keyframes setGameOver{
+    0%{
+        background-image: url("./asset/background.jpg");
+    }
+    100%{
+        background-image: url("./asset/dead.png");
+    }
+} 
+#score{
+    background-color: rgb(142, 142, 207);
+    position: absolute;
+    z-index: 2;
+    width: 23vh;
+    height: 11vh;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border-radius: 1vh;
+    font-weight: bold;
+    right: 0;
+    margin: 1vh;
+    /* animation: scoreDisplay 1s infinite; */
+}
+#curscore, #time{
+    display: block;
+    background-color: azure;
+    margin: 1vh;
+}
+#restart{
+    position: absolute;
+    width: 12vw;
+    height: 8vh;
+    background-color: rgb(33, 233, 50);
+    left: 85vw;
+    transform: translateX(-50%);
+    z-index: 2;
+    top: 30vh;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border-radius: 5vh;
+    text-align: center;
+    font-weight: bold;
+    line-height: 8vh;
+    font-size: 3vh;
+    border-style: groove;
+}
+#menu{
+    position: absolute;
+    width: 12vw;
+    height: 8vh;
+    background-color: rgb(33, 233, 50);
+    left: 85vw;
+    transform: translateX(-50%);
+    z-index: 2;
+    top: 45vh;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border-radius: 5vh;
+    text-align: center;
+    font-weight: bold;
+    line-height: 8vh;
+    font-size: 3vh;
+    border-style: groove;
+}
+#menu:hover, #restart:hover{
+    background-color: rgb(23, 114, 84);
+}

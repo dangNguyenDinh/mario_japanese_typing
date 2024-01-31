@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>mario</title>
+    <link rel="icon" href="./asset/mario.png"  type="png">
+</head>
+<body>
+    <audio src="./asset/bg.mp3"></audio>
+    <div id="restart" onmouseenter="playSelectSound()"onclick="restart()">RESTART</div>
+    <div id="menu" onmouseenter="playSelectSound()">MENU</div>
+    <div id="score">
+        <div id="curscore"> SCORE: 0</div>
+        <div id="time"> TIME LEFT: 90s</div>
+    </div>
+    <div id="ready">READY</div>
+    <div id="bg"></div>
+    <div id="bg2"></div>
+    <div id="mainGame">
+        <div id="mario">
+            <img src="./asset/mario.png"  alt="#">
+        </div>
+    </div>
+    <div id="input">
+        <input type="text">
+    </div>
+    <script src="./core.js" type="module"></script>
+    <style id="jump">
+        #bg2{
+            position: absolute;
+            width: 200vw;
+            height: 100vh;
+            top: 1vh;
+            background-image: url("./asset/bg3.png");
+            background-size: cover;
+            animation: bg2GoLeft 10s linear infinite;
+        }
+    </style>
+    <style id="koopa">
+        @keyframes koopaMoveLeft {
+            0%{
+                left: 110vw;
+            }
+            100%{
+                left: 0vw;
+            }
+        }
+    </style>
+    <script>
+        function playSelectSound(){
+            var a = document.createElement("audio");
+            a.src = "./asset/selectSound.mp3";
+            a.play();
+        }
+        function restart(){
+            window.location.href = ("index2.html");
+        }
+    </script>
+</body>
+</html>

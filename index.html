@@ -3,23 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
     <title>mario</title>
+    <link rel="icon" href="./asset/mario.png"  type="png">
 </head>
 <body>
-    <div id="ready">READY</div>
+    <div id="play" onmouseenter="playSelectSound()">PLAY</div>
+    <div id="quit" onmouseenter="playSelectSound()">QUIT</div>
     <div id="bg"></div>
     <div id="bg2"></div>
-    <div id="mainGame">
-        <div id="mario">
-            <img src="./asset/mario.png"  alt="#">
-        </div>
+    <div id="logo">
+        <img src="./asset/logo.png" alt="#">
     </div>
-    <div id="input">
-        <input type="text">
-    </div>
-    <script src="./core.js" type="module"></script>
-    <style id="jump">
+    <script>
+
+        document.querySelector("#play").onclick = function(){
+            window.location.href = "index2.html";
+            playSelectSound();
+        }
+        var i=0;
+        document.querySelector("#quit").onclick = function(){
+            ++i;
+            if(i%2==0){
+                alert("ĐỊNH THOÁT ĐẤY À?");
+            }else{
+                alert("BẤM PLAY ĐI");
+            }
+            playSelectSound();
+        }
+        function playSelectSound(){
+            var a = document.createElement("audio");
+            a.src = "./asset/selectSound.mp3";
+            a.play();
+        }
+    </script>
+    <style>
+        #logo{
+            position: absolute;
+            z-index: 5;
+            transform: translateX(-50%);
+            left: 50vw;
+            top: 8%;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        #bg{
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+            background-image: url("./asset/background.jpg");
+            background-size: cover;
+        }
         #bg2{
             position: absolute;
             width: 200vw;
@@ -29,14 +65,60 @@
             background-size: cover;
             animation: bg2GoLeft 10s linear infinite;
         }
-    </style>
-    <style id="koopa">
-        @keyframes koopaMoveLeft {
+        #mainGame{
+            position: absolute;
+            height: 100vh;
+            width: 100vw;
+            z-index: 1;
+        }
+        #play{
+            position: absolute;
+            width: 15vw;
+            height: 10vh;
+            background-color: rgb(33, 233, 50);
+            left: 30vw;
+            transform: translateX(-50%);
+            z-index: 2;
+            top: 50vh;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            border-radius: 5vh;
+            text-align: center;
+            font-weight: bold;
+            line-height: 10vh;
+            font-size: 5vh;
+            border-style: groove;
+        }
+        #quit{
+            position: absolute;
+            width: 15vw;
+            height: 10vh;
+            background-color: rgb(243, 66, 66);
+            left: 70vw;
+            transform: translateX(-50%);
+            z-index: 2;
+            top: 50vh;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            border-radius: 5vh;
+            text-align: center;
+            font-weight: bold;
+            line-height: 10vh;
+            font-size: 5vh;
+            border-style: groove;
+        }
+        #play:hover{
+            background-color: green;
+            cursor: pointer;
+        }
+        #quit:hover{
+            background-color: rgb(179, 17, 17);
+            cursor: pointer;
+        }
+        @keyframes bg2GoLeft {
             0%{
-                left: 110vw;
+                left: 0vw;
             }
             100%{
-                left: 0vw;
+                left: -100vw;
             }
         }
     </style>
