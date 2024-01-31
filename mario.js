@@ -5,8 +5,8 @@ export default class Mario{
     mj= "./asset/mario1_jump.png";
     m = "./asset/mario.png";
     curmario = "./asset/mario.png";
-    top = "65vh";
-    left = "10vw";
+    bottom = "19vh";
+    left = "15vw";
     //constructor
     constructor(){}
     //method
@@ -49,7 +49,12 @@ export default class Mario{
         //tiện thể dừng background luôn
         setBgStop();
     }
-
+    //mario die
+    marioDead(){
+        document.querySelector("#mario").querySelector("img").src = "./asset/tomb.png";
+        document.querySelector("#mario").style.bottom = this.bottom;
+        setBgStop();
+    }
 }
 function setBgStop(){
     document.querySelector("#jump").innerHTML = `
