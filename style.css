@@ -98,11 +98,19 @@ input{
         background-image: url("./asset/dead.png");
     }
 } 
+@keyframes setGameWin {
+    0%{
+        background-image: url("./asset/background.jpg");
+    }
+    100%{
+        background-image: url("./asset/winbg.png");
+    }
+}
 #score{
     background-color: rgb(142, 142, 207);
     position: absolute;
     z-index: 2;
-    width: 23vh;
+    width: 25vh;
     height: 11vh;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     border-radius: 1vh;

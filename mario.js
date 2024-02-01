@@ -55,6 +55,13 @@ export default class Mario{
         document.querySelector("#mario").style.bottom = this.bottom;
         setBgStop();
     }
+    //mario win
+    marioWin(){
+        document.querySelector("#mario").querySelector("img").src = "./asset/mariowin.png";
+        document.querySelector("#mario").width = "10vh";
+        document.querySelector("#mario").style.bottom = this.bottom;
+        setBgStop();
+    }
 }
 function setBgStop(){
     document.querySelector("#jump").innerHTML = `

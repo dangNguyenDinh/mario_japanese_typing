@@ -11,7 +11,7 @@ export default class{
         const data = getWords();
         data.then((dt)=>{
             const arr = Object.entries(dt);
-            var indexWord = Math.floor(Math.random()*5);
+            var indexWord = Math.floor(Math.random()*arr.length);
 
             //thêm thẻ div bao quanh
             var newKpEle = document.createElement("div");
@@ -49,12 +49,17 @@ export default class{
         return false;
     }
 
-    static deleteKoopaMostRight(){
+    static explodeAllKoopa(){
         var koopaArr = document.querySelectorAll(".kpEle");
         for(let i=0;i<koopaArr.length;i++){
-            if(koopaArr[i].offsetLeft){
-
-            }
+            koopaArr[i].querySelector("img").src = "./asset/explode.gif";
+            koopaArr[i].querySelector("div").textContent = "";
+        }
+    }
+    static deleteAllKoopa(){
+        var koopaArr = document.querySelectorAll(".kpEle");
+        for(let i=0;i<koopaArr.length;i++){
+            koopaArr[i].remove();
         }
     }
     // stop(){

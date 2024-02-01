@@ -72,7 +72,7 @@ document.querySelector("#ready").addEventListener("click", ()=>{
             document.querySelectorAll(".kpEle")[0].remove();
         }
         //vòng for tần số thấp để xuất koopa
-        if(count%30==0){
+        if(count%20==0){
             b.renderRun();
         }
         
@@ -88,7 +88,6 @@ document.querySelector("#ready").addEventListener("click", ()=>{
             setTimeout(()=>{
                 document.querySelector("#restart").style.display = "block";
                 document.querySelector("#menu").style.display = "block";
-
             }, 3000);
             clearInterval(mainInterval);
         }
@@ -98,12 +97,37 @@ document.querySelector("#ready").addEventListener("click", ()=>{
             time--;
             document.getElementById("time").textContent = `TIME LEFT: ${time}s`
         }
+        //xử lý nếu hết tg rồi mà vẫn chưa thua => thắng
+        if(time == 0  && Koopa.returnGameOver() == false){
+            playwinmusic();
+            document.querySelector("#bg").style.animation = "setGameWin 1s linear";   
+            document.querySelector("#bg").style.backgroundImage = "url(\"./asset/winbg.png\")"; 
+            document.querySelector("#mario").style.width = "" 
+            a.marioWin();
+            Koopa.explodeAllKoopa();
+            setTimeout(()=>{
+                Koopa.deleteAllKoopa();
+            }, 1500);
+            setTimeout(()=>{
+                document.querySelector("#restart").style.display = "block";
+                document.querySelector("#menu").style.display = "block";
+            }, 3000);
+            clearInterval(mainInterval);
+        }
         count++;
         console.log(count);
     }, 100);
 
 })
 
+
+
+function playwinmusic(){
+    document.querySelector("audio").remove();
+    var a = document.createElement("audio");
+    a.src = "./asset/win.mp3";
+    a.play();
+}
 function playdeadmusic(){
     document.querySelector("audio").remove();
     var a = document.createElement("audio");
