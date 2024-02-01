@@ -22,7 +22,7 @@ document.querySelector("#ready").addEventListener("click", ()=>{
     playbgmusic();
     //tính điểm 
     let score = 0;
-    let time = 91;
+    let time = 1;
     //xử lý tín hiệu nhận input
     let inputTextTag = document.querySelector("#input").querySelector("input");
     inputTextTag.focus();

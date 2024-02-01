@@ -9,6 +9,7 @@
     height: 100vh;
     background-image: url("./asset/background.jpg");
     background-size: cover;
+    bottom: 0;
 }
 #mainGame{
     position: absolute;
@@ -129,7 +130,7 @@ input{
     width: 12vw;
     height: 8vh;
     background-color: rgb(33, 233, 50);
-    left: 85vw;
+    left: 90vw;
     transform: translateX(-50%);
     z-index: 2;
     top: 30vh;
@@ -146,7 +147,7 @@ input{
     width: 12vw;
     height: 8vh;
     background-color: rgb(33, 233, 50);
-    left: 85vw;
+    left: 90vw;
     transform: translateX(-50%);
     z-index: 2;
     top: 45vh;
